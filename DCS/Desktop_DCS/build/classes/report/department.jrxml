@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="department" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="d22c5fc5-f3d0-4d93-806c-d774ecc26ae8">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<style name="header" mode="Opaque" hAlign="Right" vAlign="Middle" isBlankWhenNull="true" fontSize="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<pen lineWidth="1.0"/>
+			<topPen lineWidth="1.0"/>
+			<leftPen lineWidth="1.0"/>
+			<bottomPen lineWidth="1.0"/>
+			<rightPen lineWidth="1.0"/>
+		</box>
+	</style>
+	<style name="style1" mode="Opaque" backcolor="#CCCCCC" hAlign="Right" vAlign="Top" fontSize="14" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false">
+		<box>
+			<pen lineWidth="1.0" lineColor="#FF3333"/>
+			<topPen lineWidth="1.0" lineColor="#FF3333"/>
+			<leftPen lineWidth="1.0" lineColor="#FF3333"/>
+			<bottomPen lineWidth="1.0" lineColor="#FF3333"/>
+			<rightPen lineWidth="1.0" lineColor="#FF3333"/>
+		</box>
+	</style>
+	<parameter name="deptname" class="java.lang.String"/>
+	<parameter name="deptid" class="java.lang.Integer"/>
+	<queryString>
+		<![CDATA[SELECT
+     student.`name` AS student_name,
+     student.`ssn` AS student_ssn,
+     student.`nationality` AS student_nationality,
+     student.`qualification` AS student_qualification,
+     student.`phone` AS student_phone,
+     student.`year` AS student_year,
+     student.`set_no` AS student_set_no,
+     student.`dept_id` AS student_dept_id,
+     student.`gend_id` AS student_gend_id,
+     student.`relig_id` AS student_relig_id,
+     student.`personImage` AS student_personImage,
+     student.`state` AS student_state,
+     student.`sons_of_employees` AS student_sons_of_employees,
+     student.`disAble` AS student_disAble,
+     student.`stateRestriction` AS student_stateRestriction
+FROM
+     `student` student
+where student.`dept_id`=$P{deptid}]]>
+	</queryString>
+	<field name="student_name" class="java.lang.String"/>
+	<field name="student_ssn" class="java.lang.String"/>
+	<field name="student_nationality" class="java.lang.Integer"/>
+	<field name="student_qualification" class="java.lang.Integer"/>
+	<field name="student_phone" class="java.lang.String"/>
+	<field name="student_year" class="java.lang.String"/>
+	<field name="student_set_no" class="java.lang.Integer"/>
+	<field name="student_dept_id" class="java.lang.Integer"/>
+	<field name="student_gend_id" class="java.lang.Integer"/>
+	<field name="student_relig_id" class="java.lang.Integer"/>
+	<field name="student_personImage" class="java.lang.Object"/>
+	<field name="student_state" class="java.lang.Integer"/>
+	<field name="student_sons_of_employees" class="java.lang.Integer"/>
+	<field name="student_disAble" class="java.lang.Integer"/>
+	<field name="student_stateRestriction" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement uuid="e7fc9a04-c763-4283-a20a-1c96f4c055b8" mode="Opaque" x="213" y="0" width="170" height="20"/>
+				<textElement>
+					<font size="13" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{deptname}]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="14" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement uuid="2208d3e1-7523-4372-a741-2aacf4cb9226" style="header" x="342" y="2" width="188" height="20" backcolor="#CCCCFF"/>
+				<textElement/>
+				<text><![CDATA[الاسم ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement uuid="1e19f72f-16b5-422e-b749-e81cc16ed39c" style="header" x="183" y="2" width="159" height="20" backcolor="#CCCCFF"/>
+				<textElement/>
+				<text><![CDATA[الرقم القومي]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="22" splitType="Stretch">
+			<textField>
+				<reportElement uuid="8d316133-0ee4-4878-a384-70e053619ebb" style="style1" x="342" y="2" width="188" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{student_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement uuid="b1facff4-809f-45bc-9467-a827f593febb" style="style1" x="183" y="2" width="159" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[$F{student_ssn}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="21" splitType="Stretch">
+			<textField>
+				<reportElement uuid="260e8c5e-6e23-4dc1-92d6-80d6eba1c2e1" x="223" y="1" width="80" height="20"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement uuid="e2ff7ea2-49d0-4b6c-bcd8-c1f5a6051f35" x="316" y="0" width="40" height="20"/>
+				<textElement/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
